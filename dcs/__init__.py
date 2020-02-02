@@ -21,7 +21,7 @@ __license__ = """
 __docformat__ = 'restructuredtext en'
 
 __doc__ = """
-:abstract: A simple python template.
+:abstract: A distributed cloud storage server.
 :version: %s
 :author: %s
 :contact: http://github.com/aakashhemadri
