@@ -8,11 +8,13 @@ autopep8 = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-pep8 = "*"
+pylint = "*"
 
 [packages]
 pyyaml = "*"
 python-coveralls = "*"
 flask-restful = "*"
+flask = "*"
 
 [requires]
 python_version = "3.6"
