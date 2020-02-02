@@ -40,14 +40,15 @@ from dcs.utils import read_metadata, write_metadata
 
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
-APP = []
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
+        UPLOAD_FOLDER=config['storage_directory']
     )
-    app.config['UPLOAD_FOLDER'] = config['storage_directory']
+    # app.config['UPLOAD_FOLDER'] = config['storage_directory']
     utils.write_metadata([])
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -66,5 +67,4 @@ def create_app(test_config=None):
     api.add_resource(FilesList, '/files/list')
     api.add_resource(HelloWorld, '/')
     app.register_blueprint(api_bp)
-    APP = app
     return app
