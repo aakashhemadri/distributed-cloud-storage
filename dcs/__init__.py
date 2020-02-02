@@ -31,10 +31,11 @@ __doc__ = """
 
 import os
 
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, json
 from flask_restful import Resource, Api
 from dcs.resources.files import Files,FilesList
 from dcs.resources.hello import HelloWorld
+from dcs.config import config
 
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
@@ -45,7 +46,9 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
     )
-
+    app.config['UPLOAD_FOLDER'] = config['storage_directory']
+    with open(os.path.join('uploads', "metadata.json"), 'w') as json_file:
+            metadata = json.dump([], json_file)
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
@@ -59,7 +62,7 @@ def create_app(test_config=None):
     except OSError:
         pass
     
-    api.add_resource(Files, '/files')
+    api.add_resource(Files, '/files', '/files/<string:id>')
     api.add_resource(FilesList, '/files/list')
     api.add_resource(HelloWorld, '/')
     app.register_blueprint(api_bp)
