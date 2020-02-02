@@ -1,0 +1,2 @@
+service_name: travis_pro
+parallel: true #If the CI is running your build parallel.

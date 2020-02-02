@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-pep8 = "*"
+
+[packages]
+pyyaml = "*"
+python-coveralls = "*"
+flask-restful = "*"
+
+[requires]
+python_version = "3.8"
