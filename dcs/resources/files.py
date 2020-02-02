@@ -52,7 +52,5 @@ class FilesList(Resource):
         if(metadata == []):
             return "", 200
         return metadata, 200
-    def post(self):
-        return {}, 200
 
 
